@@ -1,4 +1,6 @@
 export const navigationLinks = [
-  { href: "/about", label: "About" },
+  { href: "/about-merlets", label: "About" },
+  { href: "/services", label: "Services Available" },
+
   { href: "/contact", label: "Contact" },
 ];
