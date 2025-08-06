@@ -1,0 +1,25 @@
+---
+import BaseLayout from "@layout/BaseLayout.astro";
+import { getEntry, render } from "astro:content";
+
+const post = await getEntry("pages", "home")!;
+const seo = {
+  title: post.data.title,
+  description: post.data.description ?? post.data.title,
+};
+
+const { Content } = await render(post);
+---
+
+<BaseLayout seo={seo}>
+  <!-- <h1
+      class="mb-4 text-center text-2xl text-balance text-slate-800 sm:text-3xl md:mb-6 md:text-left xl:text-5xl"
+    >
+      {post.data.title}
+    </h1> -->
+  <div
+    class="prose prose-slate prose-headings:font-normal prose-h3:text-slate-500 prose-strong:text-slate-500"
+  >
+    <Content />
+  </div>
+</BaseLayout>
