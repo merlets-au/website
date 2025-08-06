@@ -3,11 +3,11 @@ import { wrapper } from "@keystatic/core/content-components";
 
 // https://keystatic.com/docs/local-mode
 // Set storage mode: "local" or "github"
-let KEYSTATIC_STORAGE_MODE = "local";
+let KEYSTATIC_STORAGE_MODE = "github";
 
 // GitHub repository details (required for GitHub mode)
-const GITHUB_REPO_OWNER = "REPO_OWNER";
-const GITHUB_REPO_NAME = "REPO_NAME";
+const GITHUB_REPO_OWNER = "merlets-au";
+const GITHUB_REPO_NAME = "website";
 
 export default config({
   storage:
