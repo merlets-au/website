@@ -1,7 +1,5 @@
 ---
 import BaseLayout from "@layout/BaseLayout.astro";
-import Icon from "@ui/icons/Icon.astro";
-import PostFeedback from "@common/PostFeedback.svelte";
 import { formatDate } from "@utils/utils";
 import { getReadingTime } from "@utils/reading-time";
 import { getEntry, render } from "astro:content";
@@ -25,7 +23,6 @@ const { Content, headings } = await render(post);
 
 const validHeadings = headings.filter((heading) => heading.depth === 2);
 const readingTime = getReadingTime(post.body ?? "");
-const slug = id;
 ---
 
 <BaseLayout>
@@ -34,7 +31,7 @@ const slug = id;
       <div class="grid gap-8 md:grid-cols-4 lg:gap-12">
         {
           validHeadings.length > 0 && (
-            <div class="relative mt-10 rounded-lg border border-slate-300 border-dashed p-5 md:mt-0 md:border-none md:p-0 md:pb-24">
+            <div class="relative mt-10 rounded-lg border border-dashed border-slate-300 p-5 md:mt-0 md:border-none md:p-0 md:pb-24">
               <nav class="sticky top-10 md:top-32">
                 <small class="font-semibold uppercase">On this page</small>
                 <ul class="mt-2 space-y-2">
@@ -69,7 +66,7 @@ const slug = id;
           </ul>
 
           <h1
-            class="mb-4 text-balance text-center text-2xl text-slate-800 sm:text-3xl md:mb-6 md:text-left xl:text-5xl"
+            class="mb-4 text-center text-2xl text-balance text-slate-800 sm:text-3xl md:mb-6 md:text-left xl:text-5xl"
           >
             {post.data.title}
           </h1>
@@ -78,26 +75,6 @@ const slug = id;
           >
             <Content />
           </section>
-          <PostFeedback
-            client:only="svelte"
-            title="Was this post helpful?"
-            firstChoice="Yes"
-            secondChoice="No"
-            slug={slug}
-          >
-            <svelte:fragment slot="helpfulIcon">
-              <Icon
-                name="thumbUp"
-                class="transition duration-300 group-hover:-translate-y-1 group-focus-visible:-translate-y-1"
-              />
-            </svelte:fragment>
-            <svelte:fragment slot="notHelpfulIcon">
-              <Icon
-                name="thumbDown"
-                class="transition duration-300 group-hover:translate-y-1 group-focus-visible:translate-y-1"
-              />
-            </svelte:fragment>
-          </PostFeedback>
         </div>
       </div>
     </div>
