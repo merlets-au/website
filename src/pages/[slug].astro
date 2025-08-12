@@ -5,9 +5,6 @@ import { getEntry, render } from "astro:content";
 
 // 1. Get the slug from the incoming server request
 const { slug } = Astro.params;
-if (slug === "home") {
-  return Astro.redirect("/");
-}
 
 if (slug === undefined) {
   return Astro.redirect("/404");
