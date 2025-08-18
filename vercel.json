@@ -5,7 +5,7 @@
       "headers": [
         {
           "key": "Content-Security-Policy",
-          "value": "default-src 'self'; base-uri 'self'; form-action 'self' https://docs.google.com https://forms.gle; frame-src 'self' https://docs.google.com https://forms.gle; frame-ancestors 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' https://avatars.githubusercontent.com; connect-src 'self' https://api.github.com https://raw.githubusercontent.com; object-src 'none'; media-src 'self' https://vyclk3sx0z.ufs.sh; upgrade-insecure-requests; block-all-mixed-content"
+          "value": "default-src 'self'; base-uri 'self'; form-action 'self' https://docs.google.com https://forms.gle; frame-src 'self' https://docs.google.com https://forms.gle; frame-ancestors 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' https://avatars.githubusercontent.com blob:; connect-src 'self' https://api.github.com https://raw.githubusercontent.com; object-src 'none'; media-src 'self' https://vyclk3sx0z.ufs.sh; upgrade-insecure-requests; block-all-mixed-content"
         },
         {
           "key": "Permissions-Policy",
