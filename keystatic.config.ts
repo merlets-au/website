@@ -59,5 +59,44 @@ export default config({
         }),
       },
     }),
+
+    homepage: collection({
+      label: "Homepage",
+      slugField: "title",
+      path: "src/content/homepage/*",
+      entryLayout: "content",
+      format: { contentField: "content" },
+      schema: {
+        title: fields.slug({ name: { label: "Title" } }),
+        description: fields.text({ label: "Description" }),
+        content: fields.markdoc({
+          label: "Content",
+          components: {
+            image: wrapper({
+              label: "imageX",
+              schema: {
+                // src: fields.image({ label: "Path" }),
+                src: fields.text({ label: "Path" }),
+                alt: fields.text({ label: "Alt" }),
+                width: fields.text({ label: "Width" }),
+                height: fields.text({ label: "Height" }),
+                caption: fields.text({ label: "Caption" })
+                // image: fields.image({ publicPath:})
+              }
+            })
+          },
+          options: {
+            image: {
+              directory: "src/assets/images/homepage",
+              publicPath: "@images/homepage/",
+            },
+          },
+        }),
+        date: fields.date({
+          label: "Publication date",
+          description: "The date of the publication",
+        }),
+      },
+    }),
   },
 });
