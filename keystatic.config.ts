@@ -1,25 +1,51 @@
 import { config, fields, collection } from "@keystatic/core";
-import { wrapper } from "@keystatic/core/content-components";
+import {
+  block,
+  wrapper,
+  type ContentComponent,
+} from "@keystatic/core/content-components";
 
-// https://keystatic.com/docs/local-mode
-// Set storage mode: "local" or "github"
-let KEYSTATIC_STORAGE_MODE = "github";
+let KEYSTATIC_STORAGE_MODE =
+  process.env.NODE_ENV === "development" ? "local" : "github";
 
-// GitHub repository details (required for GitHub mode)
-const GITHUB_REPO_OWNER = "merlets-au";
-const GITHUB_REPO_NAME = "website";
+const components: (name: string) => Record<string, ContentComponent> = (
+  name,
+) => {
+  return {
+    ctabutton: block({
+      label: "Button",
+      ContentView: (props) => props.value.text,
+      schema: {
+        href: fields.text({ label: "Link" }),
+        openInNewTab: fields.checkbox({ label: "Open In New Tab" }),
+        text: fields.text({ label: "Text" }),
+        variant: fields.text({ label: "Colour Variant" }),
+      },
+    }),
+    captionImage: block({
+      label: "Image with Caption",
+      ContentView: (props) =>
+        props.value.caption ? props.value.caption : props.value.src?.filename,
+      schema: {
+        src: fields.image({
+          label: "Image",
+          directory: `src/assets/images/${name}`,
+          // publicPath: `/src/assets/images/${name}/`,
+          publicPath: `@images/${name}/`,
+        }),
+        width: fields.text({ label: "Width" }),
+        height: fields.text({ label: "Height" }),
+        caption: fields.text({ label: "Caption" }),
+      },
+    }),
+  };
+};
 
 export default config({
   storage:
     (KEYSTATIC_STORAGE_MODE as "github") === "github"
-      ? {
-        kind: "github",
-        repo: `${GITHUB_REPO_OWNER}/${GITHUB_REPO_NAME}`,
-      }
-      : {
-        kind: "local",
-      },
-
+      ? { kind: "github", repo: `merlets-au/website` }
+      : { kind: "local" },
   collections: {
     pages: collection({
       label: "Pages",
@@ -32,20 +58,7 @@ export default config({
         description: fields.text({ label: "Description" }),
         content: fields.markdoc({
           label: "Content",
-          components: {
-            image: wrapper({
-              label: "imageX",
-              schema: {
-                // src: fields.image({ label: "Path" }),
-                src: fields.text({ label: "Path" }),
-                alt: fields.text({ label: "Alt" }),
-                width: fields.text({ label: "Width" }),
-                height: fields.text({ label: "Height" }),
-                caption: fields.text({ label: "Caption" })
-                // image: fields.image({ publicPath:})
-              }
-            })
-          },
+          components: components("pages"),
           options: {
             image: {
               directory: "src/assets/images/pages",
@@ -71,20 +84,7 @@ export default config({
         description: fields.text({ label: "Description" }),
         content: fields.markdoc({
           label: "Content",
-          components: {
-            image: wrapper({
-              label: "imageX",
-              schema: {
-                // src: fields.image({ label: "Path" }),
-                src: fields.text({ label: "Path" }),
-                alt: fields.text({ label: "Alt" }),
-                width: fields.text({ label: "Width" }),
-                height: fields.text({ label: "Height" }),
-                caption: fields.text({ label: "Caption" })
-                // image: fields.image({ publicPath:})
-              }
-            })
-          },
+          components: components("homepage"),
           options: {
             image: {
               directory: "src/assets/images/homepage",

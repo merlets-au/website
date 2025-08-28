@@ -4,15 +4,17 @@ import { Image } from "astro:assets";
 interface Props {
   src: string;
   alt: string;
-  width: number;
-  height: number;
+  width?: number;
+  height?: number;
   caption: string;
 }
 
 const { src, alt, width, height, caption } = Astro.props;
+
+// <!-- <Image {src} {alt} {width} {height}  /> -->
 ---
 
-<figure class="float-left">
-  <Image {src} {alt} {width} {height} />
+<figure>
+  <img src={src} alt={alt ?? caption} width={width} height={height} />
   {caption && <figcaption>{caption}</figcaption>}
 </figure>

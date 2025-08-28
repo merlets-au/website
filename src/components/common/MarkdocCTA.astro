@@ -1,0 +1,23 @@
+---
+import Button from "@ui/Button.astro";
+
+interface Props {
+  href: string;
+  text: string;
+  variant: any;
+  openInNewTab: boolean;
+}
+
+const { text, href, variant, openInNewTab } = Astro.props;
+---
+
+<div class="py-2">
+  <Button
+    href={href}
+    target={openInNewTab ? "_blank" : "_self"}
+    variant={variant}
+    className="inline-flex border-none px-5! py-1.5! text-nowrap no-underline"
+  >
+    {text}
+  </Button>
+</div>
