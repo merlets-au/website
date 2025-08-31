@@ -30,8 +30,8 @@ const components: (name: string) => Record<string, ContentComponent> = (
         src: fields.image({
           label: "Image",
           directory: `src/assets/images/${name}`,
-          // publicPath: `/src/assets/images/${name}/`,
-          publicPath: `@images/${name}/`,
+          publicPath: `/src/assets/images/${name}/`,
+          // publicPath: `@images/${name}/`,
         }),
         width: fields.text({ label: "Width" }),
         height: fields.text({ label: "Height" }),
