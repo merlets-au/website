@@ -1,12 +1,14 @@
 ---
-
 import Button from "@ui/Button.astro";
 import { navigationLinks } from "@utils/navigation";
 
 const currentPath = Astro.url.pathname;
 
 // Call-to-action configuration for the primary button
-const primaryCTA = { text: "Login to CES Australia", href: "https://www.community-exchange.org/home/user-login/" };
+const primaryCTA = {
+  text: "Login to CES Australia",
+  href: "https://www.community-exchange.org/home/user-login/",
+};
 ---
 
 <header
@@ -34,7 +36,7 @@ const primaryCTA = { text: "Login to CES Australia", href: "https://www.communit
         data-hs-collapse="#hs-header-base"
       >
         <svg
-          class="size-4 hs-collapse-open:hidden"
+          class="hs-collapse-open:hidden size-4"
           xmlns="http://www.w3.org/2000/svg"
           width="24"
           height="24"
@@ -51,7 +53,7 @@ const primaryCTA = { text: "Login to CES Australia", href: "https://www.communit
             y2="12"></line><line x1="3" x2="21" y1="18" y2="18"></line></svg
         >
         <svg
-          class="hidden size-4 shrink-0 hs-collapse-open:block"
+          class="hs-collapse-open:block hidden size-4 shrink-0"
           xmlns="http://www.w3.org/2000/svg"
           width="24"
           height="24"
@@ -73,7 +75,7 @@ const primaryCTA = { text: "Login to CES Australia", href: "https://www.communit
       aria-labelledby="hs-header-base-collapse"
     >
       <div
-        class="max-h-[75vh] overflow-hidden overflow-y-auto [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-slate-300 [&::-webkit-scrollbar-track]:bg-slate-100 [&::-webkit-scrollbar]:w-2"
+        class="max-h-[75vh] overflow-hidden overflow-y-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-slate-300 [&::-webkit-scrollbar-track]:bg-slate-100"
       >
         <div
           class="flex flex-col gap-0.5 py-2 xl:flex-row xl:items-center xl:gap-1 xl:py-0"
@@ -112,16 +114,26 @@ const primaryCTA = { text: "Login to CES Australia", href: "https://www.communit
             </div>
           </div>
 
-          <div
-            class="mt-5 flex flex-wrap items-center gap-x-1.5 xl:ml-6 xl:mt-0"
-          >
+          <!-- Mobile button -->
+          <div class="mt-5 gap-x-1.5 xl:mt-0 xl:ml-6 block sm:hidden">
             <Button
-              href={primaryCTA.href}
+              href="https://mobi.community-exchange.org/"
               variant="primary"
               target="_blank"
-              className="inline-flex text-nowrap border-none py-2!"
-              >{primaryCTA.text}</Button
-            >
+              className="inline-flex border-none py-2! text-nowrap"
+              >{primaryCTA.text}
+            </Button>
+
+          <!-- Desktop button -->
+          </div>
+          <div class="mt-5 gap-x-1.5 xl:mt-0 xl:ml-6 hidden sm:block">
+            <Button
+              href="https://www.community-exchange.org/home/user-login/"
+              variant="primary"
+              target="_blank"
+              className="inline-flex border-none py-2! text-nowrap"
+              >{primaryCTA.text}
+            </Button>
           </div>
         </div>
       </div>
