@@ -1,6 +1,4 @@
 ---
-import FooterForm from "@ui/forms/FooterForm.astro";
-import ContactInfo from "@common/ContactInfo.astro";
 
 // Props for customization
 const AcknowledgementOfCountry = "Acknowledgement of Country";
@@ -66,8 +64,7 @@ const craftedBy = { name: "MERLETS Inc", url: "" };
     >
       {/* Copyright Section */}
       <p class="text-sm text-slate-600">
-        &copy; {copyrightYear}
-        Copyright by
+        &copy; {copyrightYear} Copyright by{" "}
         <a
           href={craftedBy.url}
           target="_blank"

@@ -1,7 +1,6 @@
 import { config, fields, collection } from "@keystatic/core";
 import {
   block,
-  wrapper,
   type ContentComponent,
 } from "@keystatic/core/content-components";
 
