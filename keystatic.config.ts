@@ -43,7 +43,7 @@ const components: (name: string) => Record<string, ContentComponent> = (
 export default config({
   storage:
     (KEYSTATIC_STORAGE_MODE as "github") === "github"
-      ? { kind: "github", repo: `merlets-au/website` }
+      ? { kind: "github", repo: `merlets-au/website`, branchPrefix: "keystatic/" }
       : { kind: "local" },
   collections: {
     pages: collection({
