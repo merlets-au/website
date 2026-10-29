@@ -143,7 +143,7 @@ const primaryCTA = {
 
 <script>
   document.addEventListener("astro:page-load", async () => {
-    const preline = await import("preline/preline.js");
+    const preline = await import("preline/non-auto");
     preline.HSStaticMethods.autoInit();
   });
 </script>

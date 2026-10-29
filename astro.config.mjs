@@ -23,6 +23,9 @@ export default defineConfig({
   ],
   vite: {
     plugins: [tailwindcss()],
+    optimizeDeps: {
+      include: ["@keystatic/core > slate-react"],
+    },
   },
   output: "server",
   adapter: vercel({
